@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://do37nfh3e8u1t"]
+
+[ext_resource type="Texture2D" uid="uid://cs5lcq3hjq3t4" path="res://Game Sprites/Drones/White/DroneW.png" id="1_0ssmx"]
+[ext_resource type="Script" path="res://Scripts/drone.gd" id="1_hgsxr"]
+[ext_resource type="AudioStream" uid="uid://c3rqcydukrhf6" path="res://Game Sprites/SFX/DroneHit.wav" id="3_47pny"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6iak"]
+radius = 17.0294
+
+[node name="Drone" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_hgsxr")
+hp = 2
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="DroneHit" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_47pny")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_0ssmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j6iak")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, -25.5)
+scale = Vector2(0.35, 0.35)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

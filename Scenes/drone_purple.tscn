@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgoxu3k7162bf"]
+
+[ext_resource type="PackedScene" uid="uid://do37nfh3e8u1t" path="res://Scenes/drone.tscn" id="1_jrcue"]
+[ext_resource type="Texture2D" uid="uid://bhakrrc6lpp5t" path="res://Game Sprites/Drones/Purple/DroneP.png" id="2_1w1tr"]
+
+[node name="Drone_Purple" instance=ExtResource("1_jrcue")]
+hp = 1
+speed = 200
+score_value = 150
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_1w1tr")

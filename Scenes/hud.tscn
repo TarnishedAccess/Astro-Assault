@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0wd5j2muhpcy"]
+
+[ext_resource type="FontFile" uid="uid://cwvkpo5nqlosk" path="res://Game Sprites/nulshock bd.ttf" id="1_gcavi"]
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_qqyfi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kq1c"]
+font = ExtResource("1_gcavi")
+font_size = 32
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qqyfi")
+
+[node name="Score_Display" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+text = "sCORE = 9999"
+label_settings = SubResource("LabelSettings_8kq1c")
+horizontal_alignment = 1
+vertical_alignment = 1

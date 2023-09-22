@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqgbt1vrptgxo"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_wrl5f"]
+[ext_resource type="PackedScene" uid="uid://b0ed3eog3yewq" path="res://Scenes/player.tscn" id="2_grxt0"]
+[ext_resource type="PackedScene" uid="uid://do37nfh3e8u1t" path="res://Scenes/drone.tscn" id="3_rcs2g"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_wrl5f")
+
+[node name="Player" parent="." instance=ExtResource("2_grxt0")]
+position = Vector2(243, 657)
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(243, 666)
+
+[node name="LaserContainer" type="Node2D" parent="."]
+
+[node name="Drone" parent="." instance=ExtResource("3_rcs2g")]
+position = Vector2(135, 38)

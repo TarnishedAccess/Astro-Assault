@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2ubj4ge7g7he"
+path="res://.godot/imported/PlayerDie.wav-2b3070a115fdc9b0916f96fd5a37cc47.sample"
+
+[deps]
+
+source_file="res://Game Sprites/SFX/PlayerDie.wav"
+dest_files=["res://.godot/imported/PlayerDie.wav-2b3070a115fdc9b0916f96fd5a37cc47.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

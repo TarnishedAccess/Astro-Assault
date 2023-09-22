@@ -1,0 +1,64 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1695421253
+export_presets.cfg::TextFile::-1::1695418279::0::1::::<><>::
+icon.svg::CompressedTexture2D::3993897504641003532::1695384328::1695384386::1::::<><>::
+::res://Game Sprites/::1695413270
+nulshock bd.ttf::FontFile::6360982599377933470::1695407968::1695407968::1::::<><>::
+space age.ttf::FontFile::3749536013373649166::1695407802::1695407815::1::::<><>::
+::res://Game Sprites/Drones/::1695385283
+::res://Game Sprites/Drones/Blue/::1695385285
+DroneB.png::CompressedTexture2D::5594439448981078659::1695385282::1695385285::1::::<><>::
+MissileCluster.png::CompressedTexture2D::8843086882240861761::1695385282::1695385285::1::::<><>::
+MissileClusterite.png::CompressedTexture2D::4199370902145604690::1695385282::1695385285::1::::<><>::
+MissileRocket.png::CompressedTexture2D::7407571394225708066::1695385282::1695385285::1::::<><>::
+MissileTorpedo.png::CompressedTexture2D::8482595372088338107::1695385282::1695385284::1::::<><>::
+::res://Game Sprites/Drones/Green/::1695385284
+BulletGreen.png::CompressedTexture2D::7349511478249885652::1695385283::1695385284::1::::<><>::
+DroneG.png::CompressedTexture2D::7844201582627696952::1695385283::1695385283::1::::<><>::
+ShieldGreen.png::CompressedTexture2D::9119767914386922164::1695385283::1695385283::1::::<><>::
+::res://Game Sprites/Drones/Orange/::1695385283
+DroneO.png::CompressedTexture2D::6736640231620406478::1695385283::1695385283::1::::<><>::
+DroneOSiege.png::CompressedTexture2D::5742730958432744036::1695385283::1695385283::1::::<><>::
+LaserOrange.png::CompressedTexture2D::7403713050535563649::1695385283::1695385283::1::::<><>::
+ShieldOrange.png::CompressedTexture2D::2255496909840031966::1695385283::1695385283::1::::<><>::
+ShieldOrangeSiege.png::CompressedTexture2D::1076095054677107237::1695385283::1695385283::1::::<><>::
+::res://Game Sprites/Drones/Purple/::1695385283
+BulletP.png::CompressedTexture2D::8653384721784945475::1695385283::1695385283::1::::<><>::
+DroneP.png::CompressedTexture2D::2878381014993742675::1695385283::1695385283::1::::<><>::
+DronePEngaged.png::CompressedTexture2D::5005022251353804429::1695385283::1695385283::1::::<><>::
+::res://Game Sprites/Drones/Red/::1695385283
+DroneR.png::CompressedTexture2D::8680976061148687402::1695385283::1695385283::1::::<><>::
+LaserBeam.png::CompressedTexture2D::1218450907190479004::1695385283::1695385283::1::::<><>::
+LaserCircle.png::CompressedTexture2D::7627224100369935180::1695385283::1695385283::1::::<><>::
+LaserLong.png::CompressedTexture2D::1496336056699422449::1695385283::1695385283::1::::<><>::
+::res://Game Sprites/Drones/White/::1695385283
+DroneW.png::CompressedTexture2D::6098844227959682051::1695385283::1695385283::1::::<><>::
+::res://Game Sprites/Enviroment/::1695413270
+Space, I guess.png::CompressedTexture2D::7835093575751471026::1695412282::1695412296::1::::<><>::
+StarMoving.png::CompressedTexture2D::2234592705404432159::1695412836::1695412844::1::::<><>::
+::res://Game Sprites/Player/::1695385283
+PlayerFullSpeed.png::CompressedTexture2D::7308986907503620725::1695385283::1695385283::1::::<><>::
+PlayerIdle.png::CompressedTexture2D::1808010860006012706::1695385283::1695385283::1::::<><>::
+PlayerITF1.png::CompressedTexture2D::127188185325639042::1695385283::1695385283::1::::<><>::
+PlayerITF2.png::CompressedTexture2D::4099974010151659761::1695385283::1695385283::1::::<><>::
+PlayerLaser.png::CompressedTexture2D::2214995910119139347::1695385283::1695385283::1::::<><>::
+::res://Game Sprites/SFX/::1695413270
+DroneDie.wav::AudioStreamWAV::4199114426314115042::1695413264::1695413270::1::::<><>::
+DroneHit.wav::AudioStreamWAV::6774199720659763277::1695413264::1695413270::1::::<><>::
+PlayerDie.wav::AudioStreamWAV::4322885338809839650::1695413264::1695413270::1::::<><>::
+PlayerLaser.wav::AudioStreamWAV::2776037887690313384::1695413264::1695413270::1::::<><>::
+::res://Scenes/::1695414016
+drone.tscn::PackedScene::8201674872923960671::1695414016::0::1::::<><>::uid://cs5lcq3hjq3t4::::res://Game Sprites/Drones/White/DroneW.png<>res://Scripts/drone.gd<>uid://c3rqcydukrhf6::::res://Game Sprites/SFX/DroneHit.wav
+drone_purple.tscn::PackedScene::5224309412074736043::1695414016::0::1::::<><>::uid://do37nfh3e8u1t::::res://Scenes/drone.tscn<>uid://bhakrrc6lpp5t::::res://Game Sprites/Drones/Purple/DroneP.png
+game.tscn::PackedScene::8294765861730337692::1695414015::0::1::::<><>::res://Scripts/game.gd<>uid://b0ed3eog3yewq::::res://Scenes/player.tscn<>uid://do37nfh3e8u1t::::res://Scenes/drone.tscn<>uid://cgoxu3k7162bf::::res://Scenes/drone_purple.tscn<>uid://b03c2ics56ifa::::res://Game Sprites/SFX/DroneDie.wav<>uid://d0wd5j2muhpcy::::res://Scenes/hud.tscn<>uid://bddnh2qx4snh5::::res://Scenes/game_over.tscn<>uid://djvm31rx3wjli::::res://Game Sprites/Enviroment/Space, I guess.png<>uid://b2ubj4ge7g7he::::res://Game Sprites/SFX/PlayerDie.wav<>uid://63poegdfjrr8::::res://Game Sprites/Enviroment/StarMoving.png<>uid://bfsy6525rnk5m::::res://Game Sprites/SFX/PlayerLaser.wav
+game_over.tscn::PackedScene::2603983613264491648::1695414016::0::1::::<><>::res://Scripts/game_over.gd<>uid://cwvkpo5nqlosk::::res://Game Sprites/nulshock bd.ttf
+hud.tscn::PackedScene::8959635692406989008::1695414016::0::1::::<><>::uid://cwvkpo5nqlosk::::res://Game Sprites/nulshock bd.ttf<>res://Scripts/hud.gd
+laser.tscn::PackedScene::2810277700205364415::1695414015::0::1::::<><>::res://Scripts/laser.gd<>uid://6s7wn3kpd24f::::res://Game Sprites/Player/PlayerLaser.png
+player.tscn::PackedScene::4149631670899427276::1695414015::0::1::::<><>::res://Scripts/player.gd<>uid://002w673cqo7k::::res://Game Sprites/Player/PlayerIdle.png
+::res://Scripts/::1695414010
+drone.gd::GDScript::-1::1695414009::0::1::::Drone<>Area2D<>::
+game.gd::GDScript::-1::1695414009::0::1::::<>Node2D<>::
+game_over.gd::GDScript::-1::1695409746::0::1::::<>Control<>::
+hud.gd::GDScript::-1::1695408126::0::1::::<>Control<>::
+laser.gd::GDScript::-1::1695391324::0::1::::<>Area2D<>::
+player.gd::GDScript::-1::1695409824::0::1::::Player<>CharacterBody2D<>::
