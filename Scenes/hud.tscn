@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0wd5j2muhpcy"]
 
-[ext_resource type="FontFile" uid="uid://cwvkpo5nqlosk" path="res://Game Sprites/nulshock bd.ttf" id="1_gcavi"]
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_qqyfi"]
+[ext_resource type="FontFile" uid="uid://cwvkpo5nqlosk" path="res://Game Resources/nulshock bd.ttf" id="2_a6725"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kq1c"]
-font = ExtResource("1_gcavi")
+font = ExtResource("2_a6725")
 font_size = 32
 
 [node name="HUD" type="Control"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://8qwwlqg08mcd"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_h8e2j"]
+[ext_resource type="PackedScene" uid="uid://do37nfh3e8u1t" path="res://Scenes/drone.tscn" id="2_v0bwk"]
+[ext_resource type="PackedScene" uid="uid://cgoxu3k7162bf" path="res://Scenes/drone_purple.tscn" id="3_36042"]
+[ext_resource type="FontFile" uid="uid://cwvkpo5nqlosk" path="res://Game Resources/nulshock bd.ttf" id="4_gl08t"]
+[ext_resource type="Texture2D" uid="uid://djvm31rx3wjli" path="res://Game Resources/Enviroment/Space, I guess.png" id="5_48dk0"]
+[ext_resource type="AudioStream" uid="uid://86avj1siecty" path="res://Game Resources/Music/Mystery.mp3" id="6_6acbs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rj8l2"]
+font = ExtResource("4_gl08t")
+font_size = 42
+
+[sub_resource type="Theme" id="Theme_xprtm"]
+default_font = ExtResource("4_gl08t")
+default_font_size = 45
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_h8e2j")
+enemy_scenes = Array[PackedScene]([ExtResource("2_v0bwk"), ExtResource("3_36042")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -219.0
+offset_top = 64.0
+offset_right = 219.0
+offset_bottom = 118.0
+grow_horizontal = 2
+text = "Astro Assault"
+label_settings = SubResource("LabelSettings_rj8l2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 477.0
+offset_right = 130.0
+offset_bottom = 544.0
+grow_horizontal = 2
+theme = SubResource("Theme_xprtm")
+text = "START"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 720)
+
+[node name="Background_Space" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("5_48dk0")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 540, 720)
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6acbs")
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

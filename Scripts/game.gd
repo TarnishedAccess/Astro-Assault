@@ -9,6 +9,7 @@ extends Node2D
 @onready var hud = $UI/HUD
 @onready var gameover = $UI/GameOver
 @onready var paraback = $ParallaxBackground
+@onready var game_music = $Game_music
 
 @onready var playerdie_sound = $SFX/PlayerDie
 @onready var playerlaser_sound = $SFX/PlayerLaser
@@ -21,7 +22,6 @@ var score := 0:
 		hud.score = score
 		
 var highscore
-
 var scroll_speed = 100
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +38,7 @@ func _ready():
 	player.global_position = player_spawn.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.died.connect(_on_player_died)
+	game_music.play(GlobalVars.music_progress)
 
 func save_state():
 	var save = FileAccess.open("user://save.data", FileAccess.WRITE)
@@ -48,8 +49,6 @@ func save_state():
 func _process(delta):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
-	elif Input.is_action_just_pressed("Reset"):
-		get_tree().reload_current_scene()
 		
 	spawn_timer.wait_time -= delta * 0.01
 	spawn_timer.wait_time = clamp(spawn_timer.wait_time, 0.5, 2)
@@ -74,7 +73,6 @@ func _on_enemy_killed(score_value):
 	dronedie_sound.play()
 	score += score_value
 	
-	
 func _on_player_died():
 	playerdie_sound.play()
 	gameover.set_score(score)
@@ -84,3 +82,8 @@ func _on_player_died():
 	save_state()
 	await get_tree().create_timer(1).timeout
 	gameover.visible = true
+
+func _on_game_over_restart():
+	GlobalVars.music_progress = game_music.get_playback_position() + 0.02
+	#Adding 0.02s to make up for the very small time it takes to transition. I feel like this makes the music smoother.
+	get_tree().reload_current_scene()
