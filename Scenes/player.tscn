@@ -1,17 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0ed3eog3yewq"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ed3eog3yewq"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lwvpv"]
-[ext_resource type="Texture2D" uid="uid://002w673cqo7k" path="res://Game Sprites/Player/PlayerIdle.png" id="1_rg4vq"]
+[ext_resource type="Texture2D" uid="uid://002w673cqo7k" path="res://Game Resources/Player/PlayerIdle.png" id="2_gp15h"]
+[ext_resource type="Texture2D" uid="uid://bli5ply766vny" path="res://Game Resources/Player/PlayerTrail.png" id="3_tecti"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3suyu"]
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 90, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.815686, 0.85098, 0.498039, 0.101961)
+hue_variation_min = -0.1
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 10
 motion_mode = 1
 script = ExtResource("1_lwvpv")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-6, 15)
+amount = 120
+process_material = SubResource("ParticleProcessMaterial_3suyu")
+texture = ExtResource("3_tecti")
+preprocess = 1.0
+fixed_fps = 60
+trail_lifetime = 0.01
+trail_sections = 2
+trail_section_subdivisions = 2
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(7, 15)
+amount = 120
+process_material = SubResource("ParticleProcessMaterial_3suyu")
+texture = ExtResource("3_tecti")
+preprocess = 1.0
+fixed_fps = 60
+trail_lifetime = 0.01
+trail_sections = 2
+trail_section_subdivisions = 2
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_rg4vq")
+texture = ExtResource("2_gp15h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 1)
 polygon = PackedVector2Array(-26, 19, -26, 14, -25, 14, -25, 13, -12, -5, -8, -8, -8, -10, -5, -13, -5, -18, -4, -18, -4, -25, -1, -30, 1, -30, 4, -25, 4, -18, 5, -18, 5, -13, 8, -10, 8, -8, 11, -6, 25, 13, 25, 15, 26, 15, 26, 18, 19, 18, 14, 16, 9, 16, 8, 17, 4, 17, 4, 21, 13, 25, 16, 28, 16, 30, 8, 30, 8, 28, 2, 28, 2, 30, -2, 30, -2, 28, -8, 28, -8, 30, -16, 30, -16, 27, -12, 24, -4, 21, -4, 17, -9, 17, -10, 16, -14, 16, -19, 19)
 
 [node name="GunMuzzle" type="Marker2D" parent="."]

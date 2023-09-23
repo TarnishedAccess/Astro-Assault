@@ -1,16 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqgbt1vrptgxo"]
+[gd_scene load_steps=15 format=3 uid="uid://dqgbt1vrptgxo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wrl5f"]
 [ext_resource type="PackedScene" uid="uid://b0ed3eog3yewq" path="res://Scenes/player.tscn" id="2_grxt0"]
 [ext_resource type="PackedScene" uid="uid://do37nfh3e8u1t" path="res://Scenes/drone.tscn" id="3_rcs2g"]
 [ext_resource type="PackedScene" uid="uid://cgoxu3k7162bf" path="res://Scenes/drone_purple.tscn" id="4_3ejpl"]
-[ext_resource type="AudioStream" uid="uid://b03c2ics56ifa" path="res://Game Sprites/SFX/DroneDie.wav" id="4_h5xk1"]
 [ext_resource type="PackedScene" uid="uid://d0wd5j2muhpcy" path="res://Scenes/hud.tscn" id="4_oq2sk"]
+[ext_resource type="AudioStream" uid="uid://b2ubj4ge7g7he" path="res://Game Resources/SFX/PlayerDie.wav" id="4_yw6gb"]
+[ext_resource type="AudioStream" uid="uid://bfsy6525rnk5m" path="res://Game Resources/SFX/PlayerLaser.wav" id="5_0jjvq"]
 [ext_resource type="PackedScene" uid="uid://bddnh2qx4snh5" path="res://Scenes/game_over.tscn" id="5_ygxs5"]
-[ext_resource type="Texture2D" uid="uid://djvm31rx3wjli" path="res://Game Sprites/Enviroment/Space, I guess.png" id="6_eqfxe"]
-[ext_resource type="AudioStream" uid="uid://b2ubj4ge7g7he" path="res://Game Sprites/SFX/PlayerDie.wav" id="6_pnqsp"]
-[ext_resource type="Texture2D" uid="uid://63poegdfjrr8" path="res://Game Sprites/Enviroment/StarMoving.png" id="7_cqyv8"]
-[ext_resource type="AudioStream" uid="uid://bfsy6525rnk5m" path="res://Game Sprites/SFX/PlayerLaser.wav" id="7_pa2lm"]
+[ext_resource type="AudioStream" uid="uid://b03c2ics56ifa" path="res://Game Resources/SFX/DroneDie.wav" id="6_a5d4u"]
+[ext_resource type="PackedScene" uid="uid://dci1nsucmgj33" path="res://Scenes/pause.tscn" id="9_1vt6l"]
+[ext_resource type="Texture2D" uid="uid://djvm31rx3wjli" path="res://Game Resources/Enviroment/Space, I guess.png" id="9_sev0h"]
+[ext_resource type="Texture2D" uid="uid://63poegdfjrr8" path="res://Game Resources/Enviroment/StarMoving.png" id="10_ladsx"]
+[ext_resource type="AudioStream" uid="uid://cx0nmqo6ms01h" path="res://Game Resources/Music/Portal.mp3" id="12_kuyu4"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3qguf"]
 emission_shape = 3
@@ -31,19 +33,23 @@ enemy_scenes = Array[PackedScene]([ExtResource("3_rcs2g"), ExtResource("4_3ejpl"
 [node name="SFX" type="Node2D" parent="."]
 
 [node name="PlayerDie" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("6_pnqsp")
+stream = ExtResource("4_yw6gb")
 
 [node name="PlayerLaser" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("7_pa2lm")
+stream = ExtResource("5_0jjvq")
 
 [node name="DroneDie" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("4_h5xk1")
+stream = ExtResource("6_a5d4u")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UI" instance=ExtResource("4_oq2sk")]
 
 [node name="GameOver" parent="UI" instance=ExtResource("5_ygxs5")]
+visible = false
+
+[node name="Pause" parent="UI" instance=ExtResource("9_1vt6l")]
+process_mode = 2
 visible = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -53,7 +59,7 @@ motion_mirroring = Vector2(0, 720)
 
 [node name="Background_Space" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 2
-texture = ExtResource("6_eqfxe")
+texture = ExtResource("9_sev0h")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 540, 720)
@@ -62,7 +68,7 @@ region_rect = Rect2(0, 0, 540, 720)
 position = Vector2(270, -48)
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_3qguf")
-texture = ExtResource("7_cqyv8")
+texture = ExtResource("10_ladsx")
 lifetime = 1.5
 preprocess = 5.0
 
@@ -80,4 +86,8 @@ position = Vector2(243, 666)
 wait_time = 2.0
 autostart = true
 
+[node name="Game_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_kuyu4")
+
+[connection signal="restart" from="UI/GameOver" to="." method="_on_game_over_restart"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
