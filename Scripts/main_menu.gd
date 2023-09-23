@@ -10,7 +10,7 @@ func _ready():
 	menu_music.play(0.5)
 
 func _process(delta):
-	if Input.is_action_just_pressed("Quit"):
+	if Input.is_action_just_pressed("Pause"):
 		get_tree().quit()
 		
 func _on_enemy_spawn_timer_timeout():

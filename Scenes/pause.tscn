@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://dci1nsucmgj33"]
+
+[ext_resource type="Script" path="res://Scripts/pause.gd" id="1_li3c8"]
+[ext_resource type="FontFile" uid="uid://cwvkpo5nqlosk" path="res://Game Resources/nulshock bd.ttf" id="1_wg5kl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ncw3"]
+font = ExtResource("1_wg5kl")
+font_size = 50
+
+[sub_resource type="Theme" id="Theme_8fdc5"]
+default_font = ExtResource("1_wg5kl")
+default_font_size = 40
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_li3c8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.603922)
+
+[node name="Pause Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 128.0
+offset_right = 141.0
+offset_bottom = 208.0
+grow_horizontal = 2
+text = "- PAUSED -"
+label_settings = SubResource("LabelSettings_7ncw3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.0
+offset_top = 353.0
+offset_right = 171.0
+offset_bottom = 440.0
+grow_horizontal = 2
+theme = SubResource("Theme_8fdc5")
+text = "CONTINUE"
+
+[node name="Quit" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.0
+offset_top = 465.0
+offset_right = 171.0
+offset_bottom = 552.0
+grow_horizontal = 2
+theme = SubResource("Theme_8fdc5")
+text = "Quit
+"
+
+[connection signal="pressed" from="ColorRect/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="ColorRect/Quit" to="." method="_on_quit_pressed"]

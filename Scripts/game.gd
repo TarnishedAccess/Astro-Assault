@@ -10,6 +10,7 @@ extends Node2D
 @onready var gameover = $UI/GameOver
 @onready var paraback = $ParallaxBackground
 @onready var game_music = $Game_music
+@onready var pause = $UI/Pause
 
 @onready var playerdie_sound = $SFX/PlayerDie
 @onready var playerlaser_sound = $SFX/PlayerLaser
@@ -47,8 +48,9 @@ func save_state():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Quit"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("Pause"):
+		get_tree().paused = true
+		pause.visible = true
 		
 	spawn_timer.wait_time -= delta * 0.01
 	spawn_timer.wait_time = clamp(spawn_timer.wait_time, 0.5, 2)

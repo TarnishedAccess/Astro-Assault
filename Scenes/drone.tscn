@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://do37nfh3e8u1t"]
+[gd_scene load_steps=7 format=3 uid="uid://do37nfh3e8u1t"]
 
 [ext_resource type="Script" path="res://Scripts/drone.gd" id="1_hgsxr"]
+[ext_resource type="Texture2D" uid="uid://bli5ply766vny" path="res://Game Resources/Player/PlayerTrail.png" id="2_qexao"]
 [ext_resource type="AudioStream" uid="uid://c3rqcydukrhf6" path="res://Game Resources/SFX/DroneHit.wav" id="2_xdsjv"]
 [ext_resource type="Texture2D" uid="uid://cs5lcq3hjq3t4" path="res://Game Resources/Drones/White/DroneW.png" id="3_c71xh"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jkiq3"]
+lifetime_randomness = 0.8
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, -90, 0)
+initial_velocity_min = -30.0
+initial_velocity_max = -30.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.815686, 0.815686, 0.815686, 0.101961)
+hue_variation_min = -0.05
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j6iak"]
 radius = 17.0294
@@ -12,6 +26,17 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_hgsxr")
 hp = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_jkiq3")
+texture = ExtResource("2_qexao")
+lifetime = 0.5
+preprocess = 1.0
+fixed_fps = 60
+trail_lifetime = 0.01
+trail_sections = 2
+trail_section_subdivisions = 2
 
 [node name="SFX" type="Node2D" parent="."]
 
@@ -26,7 +51,7 @@ texture = ExtResource("3_c71xh")
 shape = SubResource("CircleShape2D_j6iak")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0.5, -25.5)
+position = Vector2(0.5, -88.5)
 scale = Vector2(0.35, 0.35)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

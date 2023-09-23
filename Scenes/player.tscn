@@ -14,7 +14,7 @@ initial_velocity_min = 30.0
 initial_velocity_max = 30.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-color = Color(0.815686, 0.815686, 0.815686, 0.101961)
+color = Color(0.815686, 0.85098, 0.498039, 0.101961)
 hue_variation_min = -0.1
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
