@@ -1,3 +1,4 @@
+Timer
 Button
 Label
 ColorRect
@@ -11,7 +12,6 @@ CanvasLayer
 Node2D
 ParallaxLayer
 ParallaxBackground
-Timer
 VisibleOnScreenNotifier2D
 CollisionShape2D
 Area2D

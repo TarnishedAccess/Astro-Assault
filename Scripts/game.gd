@@ -1,6 +1,10 @@
 extends Node2D
 
 @export var enemy_scenes: Array[PackedScene] = []
+@export var difficulty = 0
+@export var difficulty_ramp = 1
+@export var minimum_spawn_time = 0.5
+@export var initial_spawn_time = 2
 
 @onready var player_spawn = $Spawn
 @onready var laser_container = $LaserContainer
@@ -17,6 +21,7 @@ extends Node2D
 @onready var dronedie_sound = $SFX/DroneDie
 
 var player = null
+
 var score := 0:
 	set(value):
 		score = value
@@ -24,7 +29,7 @@ var score := 0:
 		
 var highscore
 var scroll_speed = 100
-
+var timer = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var save = FileAccess.open("user://save.data", FileAccess.READ)
@@ -40,24 +45,34 @@ func _ready():
 	player.laser_shot.connect(_on_player_laser_shot)
 	player.died.connect(_on_player_died)
 	game_music.play(GlobalVars.music_progress)
+	spawn_timer.wait_time = initial_spawn_time
 
 func save_state():
 	var save = FileAccess.open("user://save.data", FileAccess.WRITE)
 	save.store_32(highscore)
-	
 
+func timer_function(time):
+	time = int(time)
+	var minutes = time / 60
+	var seconds = time - (minutes * 60)
+	hud.timer = "%02d:%02d" % [minutes, seconds]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
 		get_tree().paused = true
 		pause.visible = true
-		
-	spawn_timer.wait_time -= delta * 0.01
-	spawn_timer.wait_time = clamp(spawn_timer.wait_time, 0.5, 2)
 	
 	paraback.scroll_offset.y += delta * scroll_speed
 	if paraback.scroll_offset.y >= 720:
 		paraback.scroll_offset.y = 0
+
+	timer += delta
+	timer_function(timer)
+
+	difficulty = timer * difficulty_ramp
+	
+	spawn_timer.wait_time  = initial_spawn_time - (difficulty * 0.01)
+	spawn_timer.wait_time = clamp(spawn_timer.wait_time, minimum_spawn_time, initial_spawn_time)
 	
 func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
