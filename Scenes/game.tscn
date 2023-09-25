@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqgbt1vrptgxo"]
+[gd_scene load_steps=17 format=3 uid="uid://dqgbt1vrptgxo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wrl5f"]
 [ext_resource type="PackedScene" uid="uid://b0ed3eog3yewq" path="res://Scenes/player.tscn" id="2_grxt0"]
@@ -9,10 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://bfsy6525rnk5m" path="res://Game Resources/SFX/PlayerLaser.wav" id="5_0jjvq"]
 [ext_resource type="PackedScene" uid="uid://bddnh2qx4snh5" path="res://Scenes/game_over.tscn" id="5_ygxs5"]
 [ext_resource type="AudioStream" uid="uid://b03c2ics56ifa" path="res://Game Resources/SFX/DroneDie.wav" id="6_a5d4u"]
+[ext_resource type="AudioStream" uid="uid://bpgvnyiecurok" path="res://Game Resources/SFX/gem_pickup.wav" id="8_5nfkk"]
 [ext_resource type="PackedScene" uid="uid://dci1nsucmgj33" path="res://Scenes/pause.tscn" id="9_1vt6l"]
 [ext_resource type="Texture2D" uid="uid://djvm31rx3wjli" path="res://Game Resources/Enviroment/Space, I guess.png" id="9_sev0h"]
 [ext_resource type="Texture2D" uid="uid://63poegdfjrr8" path="res://Game Resources/Enviroment/StarMoving.png" id="10_ladsx"]
 [ext_resource type="AudioStream" uid="uid://cx0nmqo6ms01h" path="res://Game Resources/Music/Portal.mp3" id="12_kuyu4"]
+[ext_resource type="PackedScene" uid="uid://qjhpgwxqagk2" path="res://Scenes/gem_yellow_small.tscn" id="14_odscd"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3qguf"]
 emission_shape = 3
@@ -29,6 +31,7 @@ orbit_velocity_max = 0.0
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wrl5f")
 enemy_scenes = Array[PackedScene]([ExtResource("3_rcs2g"), ExtResource("4_3ejpl")])
+gem_scenes = Array[PackedScene]([ExtResource("14_odscd")])
 
 [node name="SFX" type="Node2D" parent="."]
 
@@ -40,6 +43,9 @@ stream = ExtResource("5_0jjvq")
 
 [node name="DroneDie" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_a5d4u")
+
+[node name="Pickup_Sound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_5nfkk")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -81,6 +87,8 @@ position = Vector2(243, 666)
 [node name="LaserContainer" type="Node2D" parent="."]
 
 [node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="DropContainer" type="Node2D" parent="."]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 2.0

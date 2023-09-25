@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var enemy_scenes: Array[PackedScene] = []
+@export var gem_scenes: Array[PackedScene] = []
 @export var difficulty = 0
 @export var difficulty_ramp = 1
 @export var minimum_spawn_time = 0.5
@@ -15,7 +16,9 @@ extends Node2D
 @onready var paraback = $ParallaxBackground
 @onready var game_music = $Game_music
 @onready var pause = $UI/Pause
+@onready var drop_container = $DropContainer
 
+@onready var pickup_sound = $SFX/Pickup_Sound
 @onready var playerdie_sound = $SFX/PlayerDie
 @onready var playerlaser_sound = $SFX/PlayerLaser
 @onready var dronedie_sound = $SFX/DroneDie
@@ -30,6 +33,12 @@ var score := 0:
 var highscore
 var scroll_speed = 100
 var timer = 0.0
+
+var credits = 0:
+	set(value):
+		credits = value
+		hud.currency = credits
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var save = FileAccess.open("user://save.data", FileAccess.READ)
@@ -40,6 +49,7 @@ func _ready():
 		save_state()
 			
 	score = 0
+	credits = 0
 	player = get_tree().get_first_node_in_group("Player")
 	player.global_position = player_spawn.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
@@ -84,11 +94,18 @@ func _on_enemy_spawn_timer_timeout():
 	var new_enemy = enemy_scenes.pick_random().instantiate()
 	new_enemy.global_position = Vector2(randf_range(50, 490), -40)
 	new_enemy.killed.connect(_on_enemy_killed)
+	new_enemy.gem_spawn.connect(_on_enemy_gem_spawn)
 	enemy_container.add_child(new_enemy)
 
 func _on_enemy_killed(score_value):
 	dronedie_sound.play()
 	score += score_value
+	
+func _on_enemy_gem_spawn(Y, X):
+	var new_gem = gem_scenes[0].instantiate()
+	new_gem.collected.connect(_on_gem_collected)
+	new_gem.global_position = Vector2(X, Y)
+	drop_container.add_child(new_gem)
 	
 func _on_player_died():
 	playerdie_sound.play()
@@ -104,3 +121,7 @@ func _on_game_over_restart():
 	GlobalVars.music_progress = game_music.get_playback_position() + 0.02
 	#Adding 0.02s to make up for the very small time it takes to transition. I feel like this makes the music smoother.
 	get_tree().reload_current_scene()
+
+func _on_gem_collected(value):
+	credits += value
+	pickup_sound.play()

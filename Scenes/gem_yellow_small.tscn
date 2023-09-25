@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://qjhpgwxqagk2"]
+
+[ext_resource type="Script" path="res://Scripts/gem_yellow_small.gd" id="1_1skb1"]
+[ext_resource type="Texture2D" uid="uid://0d4trey0j15c" path="res://Game Resources/Drops/yellow_small.png" id="1_k8yjw"]
+
+[node name="Gem_yellow_small" type="Area2D"]
+collision_layer = 16
+gravity_space_override = 3
+gravity = 90.0
+script = ExtResource("1_1skb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_k8yjw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, -6, -6, 2, -6, 6, -1, 6, 6, -1, 6, -6)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -24)
+scale = Vector2(1, 0.2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
