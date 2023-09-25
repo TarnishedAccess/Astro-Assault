@@ -101,8 +101,9 @@ func _on_enemy_killed(score_value):
 	dronedie_sound.play()
 	score += score_value
 	
-func _on_enemy_gem_spawn(Y, X):
+func _on_enemy_gem_spawn(Y, X, credit_value):
 	var new_gem = gem_scenes[0].instantiate()
+	new_gem.value = credit_value
 	new_gem.collected.connect(_on_gem_collected)
 	new_gem.global_position = Vector2(X, Y)
 	drop_container.add_child(new_gem)

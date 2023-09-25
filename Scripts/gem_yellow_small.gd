@@ -1,8 +1,7 @@
 class_name gem_yellow_small extends Area2D
 
 signal collected
-
-@export var value = 1
+var value = 1
 var speed = -4
 
 func _physics_process(delta):
