@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqgbt1vrptgxo"]
+[gd_scene load_steps=16 format=3 uid="uid://dqgbt1vrptgxo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wrl5f"]
 [ext_resource type="PackedScene" uid="uid://b0ed3eog3yewq" path="res://Scenes/player.tscn" id="2_grxt0"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cgoxu3k7162bf" path="res://Scenes/drone_purple.tscn" id="4_3ejpl"]
 [ext_resource type="PackedScene" uid="uid://d0wd5j2muhpcy" path="res://Scenes/hud.tscn" id="4_oq2sk"]
 [ext_resource type="AudioStream" uid="uid://b2ubj4ge7g7he" path="res://Game Resources/SFX/PlayerDie.wav" id="4_yw6gb"]
-[ext_resource type="AudioStream" uid="uid://bfsy6525rnk5m" path="res://Game Resources/SFX/PlayerLaser.wav" id="5_0jjvq"]
 [ext_resource type="PackedScene" uid="uid://bddnh2qx4snh5" path="res://Scenes/game_over.tscn" id="5_ygxs5"]
 [ext_resource type="AudioStream" uid="uid://b03c2ics56ifa" path="res://Game Resources/SFX/DroneDie.wav" id="6_a5d4u"]
 [ext_resource type="AudioStream" uid="uid://bpgvnyiecurok" path="res://Game Resources/SFX/gem_pickup.wav" id="8_5nfkk"]
@@ -38,9 +37,6 @@ energy_regen = 0.2
 
 [node name="PlayerDie" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("4_yw6gb")
-
-[node name="PlayerLaser" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("5_0jjvq")
 
 [node name="DroneDie" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("6_a5d4u")
@@ -85,7 +81,7 @@ position = Vector2(243, 657)
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(243, 666)
 
-[node name="LaserContainer" type="Node2D" parent="."]
+[node name="BulletContainer" type="Node2D" parent="."]
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 

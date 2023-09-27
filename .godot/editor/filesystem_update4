@@ -1,5 +1,4 @@
 res://Scenes/game.tscn
-res://Scenes/laser.tscn
 res://Scenes/drone.tscn
 res://Scenes/drone_purple.tscn
 res://Scenes/hud.tscn
@@ -7,8 +6,9 @@ res://Scenes/game_over.tscn
 res://Scenes/main_menu.tscn
 res://Scenes/pause.tscn
 res://Scenes/gem_yellow_small.tscn
-res://Scripts/hud.gd
-res://Scripts/gem_yellow_small.gd
-res://Scripts/game.gd
-res://Scripts/laser.gd
 res://Scripts/player.gd
+res://Scripts/game.gd
+res://Scenes/laser.tscn
+res://Scripts/laser.gd
+res://Scripts/global_vars.gd
+res://Scripts/hud.gd

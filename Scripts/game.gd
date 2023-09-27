@@ -11,7 +11,7 @@ extends Node2D
 @export var energy_regen = 0.15
 
 @onready var player_spawn = $Spawn
-@onready var laser_container = $LaserContainer
+@onready var bullet_container = $BulletContainer
 @onready var spawn_timer = $EnemySpawnTimer
 @onready var enemy_container = $EnemyContainer
 @onready var hud = $UI/HUD
@@ -23,7 +23,6 @@ extends Node2D
 
 @onready var pickup_sound = $SFX/Pickup_Sound
 @onready var playerdie_sound = $SFX/PlayerDie
-@onready var playerlaser_sound = $SFX/PlayerLaser
 @onready var dronedie_sound = $SFX/DroneDie
 
 var player = null
@@ -36,7 +35,7 @@ var score := 0:
 var highscore
 var scroll_speed = 100
 var timer = 0.0
-var energy = max_energy
+var energy
 
 var credits = 0:
 	set(value):
@@ -45,6 +44,9 @@ var credits = 0:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hud.energy.max_value = max_energy
+	energy = max_energy
+	GlobalVars.game = self
 	var save = FileAccess.open("user://save.data", FileAccess.READ)
 	if save!=null:
 		highscore = save.get_32()
@@ -56,7 +58,7 @@ func _ready():
 	credits = 0
 	player = get_tree().get_first_node_in_group("Player")
 	player.global_position = player_spawn.global_position
-	player.laser_shot.connect(_on_player_laser_shot)
+	player.weapon_shot.connect(_on_player_weapon_shot)
 	player.died.connect(_on_player_died)
 	game_music.play(GlobalVars.music_progress)
 	spawn_timer.wait_time = initial_spawn_time
@@ -93,11 +95,11 @@ func _process(delta):
 	spawn_timer.wait_time  = initial_spawn_time - (difficulty * 0.01)
 	spawn_timer.wait_time = clamp(spawn_timer.wait_time, minimum_spawn_time, initial_spawn_time)
 	
-func _on_player_laser_shot(laser_scene, location):
-	var laser = laser_scene.instantiate()
-	laser.global_position = location
-	laser_container.add_child(laser)
-	playerlaser_sound.play()
+func _on_player_weapon_shot(weapon_scene, location):
+	var bullet = weapon_scene.instantiate()
+	bullet.global_position = location
+	bullet_container.add_child(bullet)
+	
 
 func _on_enemy_spawn_timer_timeout():
 	var new_enemy = enemy_scenes.pick_random().instantiate()
@@ -139,5 +141,4 @@ func _on_gem_collected(value):
 func _on_player_fire_attempt(energy_cost):
 	if energy_cost <= energy:
 		player.shoot()
-		energy -= energy_cost
 		
