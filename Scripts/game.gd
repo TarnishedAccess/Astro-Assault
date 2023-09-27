@@ -7,6 +7,9 @@ extends Node2D
 @export var minimum_spawn_time = 0.5
 @export var initial_spawn_time = 2
 
+@export var max_energy = 100
+@export var energy_regen = 0.15
+
 @onready var player_spawn = $Spawn
 @onready var laser_container = $LaserContainer
 @onready var spawn_timer = $EnemySpawnTimer
@@ -33,6 +36,7 @@ var score := 0:
 var highscore
 var scroll_speed = 100
 var timer = 0.0
+var energy = max_energy
 
 var credits = 0:
 	set(value):
@@ -68,6 +72,7 @@ func timer_function(time):
 	hud.timer = "%02d:%02d" % [minutes, seconds]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Input.is_action_just_pressed("Pause"):
 		get_tree().paused = true
 		pause.visible = true
@@ -75,6 +80,10 @@ func _process(delta):
 	paraback.scroll_offset.y += delta * scroll_speed
 	if paraback.scroll_offset.y >= 720:
 		paraback.scroll_offset.y = 0
+
+	energy += energy_regen
+	energy = clamp(energy, 0, max_energy)
+	hud.energy = energy
 
 	timer += delta
 	timer_function(timer)
@@ -126,3 +135,9 @@ func _on_game_over_restart():
 func _on_gem_collected(value):
 	credits += value
 	pickup_sound.play()
+
+func _on_player_fire_attempt(energy_cost):
+	if energy_cost <= energy:
+		player.shoot()
+		energy -= energy_cost
+		

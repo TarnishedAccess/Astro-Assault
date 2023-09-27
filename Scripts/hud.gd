@@ -10,4 +10,8 @@ extends Control
 
 @onready var currency = $Currency_Display:
 	set(value):
-		currency.text = "Credits = " + str(value)
+		currency.text = "$ " + str(value) 
+		
+@onready var energy = $TextureProgressBar:
+	set(level):
+		energy.value = level

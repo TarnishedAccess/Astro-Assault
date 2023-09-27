@@ -7,6 +7,7 @@
 collision_layer = 16
 gravity_space_override = 3
 gravity = 90.0
+angular_damp = 50.0
 script = ExtResource("1_1skb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

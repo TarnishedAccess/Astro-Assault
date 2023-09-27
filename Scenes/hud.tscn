@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0wd5j2muhpcy"]
+[gd_scene load_steps=8 format=3 uid="uid://d0wd5j2muhpcy"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_qqyfi"]
 [ext_resource type="FontFile" uid="uid://cwvkpo5nqlosk" path="res://Game Resources/nulshock bd.ttf" id="2_a6725"]
+[ext_resource type="Texture2D" uid="uid://44s0fjnwj1mx" path="res://Game Resources/UI/energy_emptyl.png" id="3_y033n"]
+[ext_resource type="Texture2D" uid="uid://bds0bvgwmldw5" path="res://Game Resources/UI/energy.png" id="4_forlt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kq1c"]
 font = ExtResource("2_a6725")
@@ -31,13 +33,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -199.0
+offset_left = -530.0
 offset_top = -44.0
+offset_right = -331.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "sCORE = 9999"
 label_settings = SubResource("LabelSettings_8kq1c")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer_Display" type="Label" parent="."]
@@ -45,8 +47,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -61.5
-offset_right = 61.5
+offset_left = -53.5
+offset_right = 69.5
 offset_bottom = 64.0
 grow_horizontal = 2
 text = "30:00"
@@ -61,11 +63,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -532.0
-offset_top = -44.0
-offset_right = -333.0
+offset_left = -530.0
+offset_top = -84.0
+offset_right = -437.0
+offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Credits = 9999"
+text = "$ 9999"
 label_settings = SubResource("LabelSettings_avxs1")
 vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 680.0
+offset_right = 527.0
+offset_bottom = 707.0
+value = 50.0
+texture_under = ExtResource("3_y033n")
+texture_progress = ExtResource("4_forlt")
+texture_progress_offset = Vector2(4, 4)

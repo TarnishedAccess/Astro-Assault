@@ -26,6 +26,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_hgsxr")
 hp = 2
+score_value = 10
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 60
