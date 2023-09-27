@@ -6,7 +6,7 @@
 [node name="Drone_Purple" instance=ExtResource("1_jrcue")]
 hp = 1
 speed = 200
-score_value = 150
+score_value = 15
 
 [node name="Sprite2D" parent="." index="2"]
 scale = Vector2(1.4, 1.4)

@@ -3,10 +3,13 @@ class_name Drone extends Area2D
 @export var hp = 1
 @export var speed = 135
 @export var score_value = 100
+@export var gem_chance = 50
+@export var credit_value = 1
 
 @onready var dronehit_sound = $SFX/DroneHit
 
 signal killed
+signal gem_spawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +29,8 @@ func damage(amount):
 		dronehit_sound.play()
 
 func die():
+	if randi_range(0, 100) >= gem_chance:
+		gem_spawn.emit(global_position.y, global_position.x, credit_value)
 	queue_free()
 
 func _on_body_entered(body):
