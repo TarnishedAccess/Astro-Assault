@@ -9,8 +9,7 @@ signal fire_attempt
 
 @export var weapon_ROF : float
 @export var weapon_energy_cost : float
-@export var weapon_scene = preload("res://Scenes/laser.tscn")
-var weapon_script = weapon_scene.get_script()
+@export var weapon_scene = load("res://Scenes/laser.tscn")
 var shoot_CD = false
 
 func _ready():
