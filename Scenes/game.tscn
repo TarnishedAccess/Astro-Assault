@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqgbt1vrptgxo"]
+[gd_scene load_steps=17 format=3 uid="uid://dqgbt1vrptgxo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wrl5f"]
 [ext_resource type="PackedScene" uid="uid://b0ed3eog3yewq" path="res://Scenes/player.tscn" id="2_grxt0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bddnh2qx4snh5" path="res://Scenes/game_over.tscn" id="5_ygxs5"]
 [ext_resource type="AudioStream" uid="uid://b03c2ics56ifa" path="res://Game Resources/SFX/DroneDie.wav" id="6_a5d4u"]
 [ext_resource type="AudioStream" uid="uid://bpgvnyiecurok" path="res://Game Resources/SFX/gem_pickup.wav" id="8_5nfkk"]
+[ext_resource type="AudioStream" uid="uid://cg8k80damblue" path="res://Game Resources/SFX/DroneLeft.wav" id="8_jip5c"]
 [ext_resource type="PackedScene" uid="uid://dci1nsucmgj33" path="res://Scenes/pause.tscn" id="9_1vt6l"]
 [ext_resource type="Texture2D" uid="uid://djvm31rx3wjli" path="res://Game Resources/Enviroment/Space, I guess.png" id="9_sev0h"]
 [ext_resource type="Texture2D" uid="uid://63poegdfjrr8" path="res://Game Resources/Enviroment/StarMoving.png" id="10_ladsx"]
@@ -44,6 +45,10 @@ stream = ExtResource("6_a5d4u")
 [node name="Pickup_Sound" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("8_5nfkk")
 
+[node name="DroneLeft" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_jip5c")
+pitch_scale = 1.87
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UI" instance=ExtResource("4_oq2sk")]
@@ -58,7 +63,7 @@ visible = false
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(0, 720)
+motion_mirroring = Vector2(540, 720)
 
 [node name="Background_Space" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 2
@@ -94,6 +99,8 @@ autostart = true
 [node name="Game_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_kuyu4")
 
+[connection signal="quit" from="UI/GameOver" to="." method="_on_game_over_quit"]
 [connection signal="restart" from="UI/GameOver" to="." method="_on_game_over_restart"]
+[connection signal="boost_attempt" from="Player" to="." method="_on_player_boost_attempt"]
 [connection signal="fire_attempt" from="Player" to="." method="_on_player_fire_attempt"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

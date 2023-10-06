@@ -1,22 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0ed3eog3yewq"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lwvpv"]
+[ext_resource type="Material" uid="uid://c8uu7tw4m0cpr" path="res://Scenes/player.tres" id="2_2urjw"]
 [ext_resource type="Texture2D" uid="uid://002w673cqo7k" path="res://Game Resources/Player/PlayerIdle.png" id="2_gp15h"]
 [ext_resource type="Texture2D" uid="uid://bli5ply766vny" path="res://Game Resources/Player/PlayerTrail.png" id="3_tecti"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3suyu"]
-lifetime_randomness = 0.6
-particle_flag_disable_z = true
-direction = Vector3(0, 1, 0)
-spread = 10.0
-gravity = Vector3(0, 90, 0)
-initial_velocity_min = 30.0
-initial_velocity_max = 30.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-color = Color(0.815686, 0.85098, 0.498039, 0.101961)
-hue_variation_min = -0.1
-turbulence_noise_strength = 0.01
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 26
@@ -26,7 +13,7 @@ script = ExtResource("1_lwvpv")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(-6, 15)
 amount = 120
-process_material = SubResource("ParticleProcessMaterial_3suyu")
+process_material = ExtResource("2_2urjw")
 texture = ExtResource("3_tecti")
 preprocess = 1.0
 fixed_fps = 60
@@ -37,7 +24,7 @@ trail_section_subdivisions = 2
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 position = Vector2(7, 15)
 amount = 120
-process_material = SubResource("ParticleProcessMaterial_3suyu")
+process_material = ExtResource("2_2urjw")
 texture = ExtResource("3_tecti")
 preprocess = 1.0
 fixed_fps = 60

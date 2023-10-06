@@ -22,7 +22,7 @@ extends Area2D
 #MY LITTLE DARK AGE
 
 
-@export var damage = 1
+@export var damage = 1.0
 @export var speed = 600
 @export var ROF = 0.25
 @export var energy_cost = 10

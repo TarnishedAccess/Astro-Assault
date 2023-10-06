@@ -10,6 +10,7 @@ class_name Drone extends Area2D
 
 signal killed
 signal gem_spawn
+signal left_screen
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,4 +40,5 @@ func _on_body_entered(body):
 		die()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	left_screen.emit(score_value)
 	queue_free()

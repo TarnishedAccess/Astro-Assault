@@ -10,6 +10,8 @@ extends Node2D
 @export var max_energy = 100
 @export var energy_regen = 0.15
 
+@export var win_timer = 10 * 60
+
 @onready var player_spawn = $Spawn
 @onready var bullet_container = $BulletContainer
 @onready var spawn_timer = $EnemySpawnTimer
@@ -24,6 +26,7 @@ extends Node2D
 @onready var pickup_sound = $SFX/Pickup_Sound
 @onready var playerdie_sound = $SFX/PlayerDie
 @onready var dronedie_sound = $SFX/DroneDie
+@onready var droneleft_sound = $SFX/DroneLeft
 
 var player = null
 
@@ -74,6 +77,8 @@ func timer_function(time):
 	hud.timer = "%02d:%02d" % [minutes, seconds]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("Test_Increase_Speed"):
+		player.speed += 25
 	
 	if Input.is_action_just_pressed("Pause"):
 		get_tree().paused = true
@@ -82,10 +87,15 @@ func _process(delta):
 	paraback.scroll_offset.y += delta * scroll_speed
 	if paraback.scroll_offset.y >= 720:
 		paraback.scroll_offset.y = 0
+	#TODO: Fix & Implement
+	#paraback.scroll_offset.x -= player.velocity.x/(player.speed*4)
 
 	energy += energy_regen
 	energy = clamp(energy, 0, max_energy)
 	hud.energy = energy
+
+	if timer >= win_timer:
+		win()
 
 	timer += delta
 	timer_function(timer)
@@ -94,6 +104,11 @@ func _process(delta):
 	
 	spawn_timer.wait_time  = initial_spawn_time - (difficulty * 0.01)
 	spawn_timer.wait_time = clamp(spawn_timer.wait_time, minimum_spawn_time, initial_spawn_time)
+	
+	
+func win():
+	print("yessir")
+	get_tree().quit()
 	
 func _on_player_weapon_shot(weapon_scene, location):
 	var bullet = weapon_scene.instantiate()
@@ -106,11 +121,16 @@ func _on_enemy_spawn_timer_timeout():
 	new_enemy.global_position = Vector2(randf_range(50, 490), -40)
 	new_enemy.killed.connect(_on_enemy_killed)
 	new_enemy.gem_spawn.connect(_on_enemy_gem_spawn)
+	new_enemy.left_screen.connect(_on_enemy_left_screen)
 	enemy_container.add_child(new_enemy)
 
 func _on_enemy_killed(score_value):
 	dronedie_sound.play()
 	score += score_value
+	
+func _on_enemy_left_screen(score_value):
+	score -= score_value/2
+	droneleft_sound.play()
 	
 func _on_enemy_gem_spawn(Y, X, credit_value):
 	var new_gem = gem_scenes[0].instantiate()
@@ -141,4 +161,13 @@ func _on_gem_collected(value):
 func _on_player_fire_attempt(energy_cost):
 	if energy_cost <= energy:
 		player.shoot()
-		
+
+func _on_player_boost_attempt(boost_cost):
+	if energy >= max_energy/5:
+		energy -= (boost_cost)
+		player.boost()
+	else:
+		player.release_boost()
+
+func _on_game_over_quit():
+	pass # Replace with function body.

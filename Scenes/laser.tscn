@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgbk4l1xjhq0f"]
+[gd_scene load_steps=6 format=3 uid="uid://bgbk4l1xjhq0f"]
 
 [ext_resource type="Script" path="res://Scripts/laser.gd" id="1_uf7er"]
 [ext_resource type="Texture2D" uid="uid://6s7wn3kpd24f" path="res://Game Resources/Player/PlayerLaser.png" id="2_x0r5l"]
 [ext_resource type="AudioStream" uid="uid://bfsy6525rnk5m" path="res://Game Resources/SFX/PlayerLaser.wav" id="3_kf81b"]
+[ext_resource type="Script" path="res://Scripts/AudioRandomizer.gd" id="4_4uh7f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1l2x"]
 radius = 2.0
@@ -25,6 +26,7 @@ scale = Vector2(0.2, 0.1)
 
 [node name="LaserSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kf81b")
+script = ExtResource("4_4uh7f")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

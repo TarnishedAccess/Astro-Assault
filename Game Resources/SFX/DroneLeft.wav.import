@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cg8k80damblue"
+path="res://.godot/imported/DroneLeft.wav-61f6474bea5505a6068301dbb04f745c.sample"
+
+[deps]
+
+source_file="res://Game Resources/SFX/DroneLeft.wav"
+dest_files=["res://.godot/imported/DroneLeft.wav-61f6474bea5505a6068301dbb04f745c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

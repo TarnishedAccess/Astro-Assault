@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7g7hatxexlto"]
+
+[ext_resource type="PackedScene" uid="uid://bgbk4l1xjhq0f" path="res://Scenes/laser.tscn" id="1_ir00n"]
+[ext_resource type="Texture2D" uid="uid://0khj87qx0fcs" path="res://Game Resources/Player/PlayerChaingun.png" id="2_1pi40"]
+[ext_resource type="Script" path="res://Scenes/chaingun.gd" id="2_kxksc"]
+
+[node name="Laser" instance=ExtResource("1_ir00n")]
+script = ExtResource("2_kxksc")
+damage = 0.4
+speed = 750
+ROF = 0.1
+energy_cost = 4
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_1pi40")

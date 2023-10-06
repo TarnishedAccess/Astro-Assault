@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1695914257
+::res://::1696610907
 export_presets.cfg::TextFile::-1::1695418279::0::1::::<><>::
 icon.svg::CompressedTexture2D::3993897504641003532::1695384328::1695384386::1::::<><>::
-::res://Game Resources/::1695757717
+::res://Game Resources/::1696594289
 nulshock bd.ttf::FontFile::6360982599377933470::1695407968::1695468898::1::::<><>::
 ::res://Game Resources/Drones/::1695385283
 ::res://Game Resources/Drones/Blue/::1695468898
@@ -38,19 +38,21 @@ yellow_small.png::CompressedTexture2D::1762709847287822910::1695732262::16957322
 ::res://Game Resources/Enviroment/::1695468898
 Space, I guess.png::CompressedTexture2D::7835093575751471026::1695412282::1695468898::1::::<><>::
 StarMoving.png::CompressedTexture2D::2234592705404432159::1695412836::1695468898::1::::<><>::
-::res://Game Resources/Music/::1695473573
+::res://Game Resources/Music/::1695916131
 Mystery.mp3::AudioStreamMP3::2380265565806679174::1695468872::1695468949::1::::<><>::
 Portal.mp3::AudioStreamMP3::6439605828771399695::1695468872::1695468954::1::::<><>::
-::res://Game Resources/Player/::1695474639
+::res://Game Resources/Player/::1695916138
+PlayerChaingun.png::CompressedTexture2D::1775807743048903714::1695916128::1695916138::1::::<><>::
 PlayerFullSpeed.png::CompressedTexture2D::7308986907503620725::1695385283::1695468898::1::::<><>::
 PlayerIdle.png::CompressedTexture2D::1808010860006012706::1695385283::1695468898::1::::<><>::
 PlayerITF1.png::CompressedTexture2D::127188185325639042::1695385283::1695468898::1::::<><>::
 PlayerITF2.png::CompressedTexture2D::4099974010151659761::1695385283::1695468898::1::::<><>::
 PlayerLaser.png::CompressedTexture2D::2214995910119139347::1695385283::1695468898::1::::<><>::
 PlayerTrail.png::CompressedTexture2D::3176861898764263566::1695474633::1695474639::1::::<><>::
-::res://Game Resources/SFX/::1695757694
+::res://Game Resources/SFX/::1696594289
 DroneDie.wav::AudioStreamWAV::4199114426314115042::1695413264::1695468899::1::::<><>::
 DroneHit.wav::AudioStreamWAV::6774199720659763277::1695413264::1695468899::1::::<><>::
+DroneLeft.wav::AudioStreamWAV::5262766313959150816::1696594264::1696594289::1::::<><>::
 gem_pickup.wav::AudioStreamWAV::3452939150060864234::1695732262::1695732262::1::::<><>::
 PlayerDie.wav::AudioStreamWAV::4322885338809839650::1695413264::1695468899::1::::<><>::
 PlayerLaser.wav::AudioStreamWAV::2776037887690313384::1695413264::1695468899::1::::<><>::
@@ -58,25 +60,31 @@ PlayerLaser.wav::AudioStreamWAV::2776037887690313384::1695413264::1695468899::1:
 energy.png::CompressedTexture2D::2635666838068572142::1695758134::1695758141::1::::<><>::
 energy_emptyl.png::CompressedTexture2D::2096481248228525983::1695757683::1695757717::1::::<><>::
 energy_full.png::CompressedTexture2D::2713737649563597826::1695757683::1695757717::1::::<><>::
-::res://Scenes/::1695914121
-drone.tscn::PackedScene::8201674872923960671::1695914092::0::1::::<><>::res://Scripts/drone.gd<>uid://bli5ply766vny
-drone_purple.tscn::PackedScene::5224309412074736043::1695854439::0::1::::<><>::uid://do37nfh3e8u1t
-game.tscn::PackedScene::8294765861730337692::1695914092::0::1::::<><>::res://Scripts/game.gd<>uid://b0ed3eog3yewq
-game_over.tscn::PackedScene::2603983613264491648::1695854440::0::1::::<><>::res://Scripts/game_over.gd<>uid://cwvkpo5nqlosk
+::res://Materials/::1696424894
+::res://Scenes/::1696596850
+chaingun.gd::GDScript::-1::1695917602::0::1::::<>Area2D<>::
+chaingun.tscn::PackedScene::7033226105056019544::1696596797::0::1::::<><>::uid://bgbk4l1xjhq0f::::res://Scenes/laser.tscn<>uid://0khj87qx0fcs::::res://Game Resources/Player/PlayerChaingun.png<>res://Scenes/chaingun.gd
+drone.tscn::PackedScene::8201674872923960671::1696596796::0::1::::<><>::res://Scripts/drone.gd<>uid://bli5ply766vny::::res://Game Resources/Player/PlayerTrail.png<>uid://c3rqcydukrhf6::::res://Game Resources/SFX/DroneHit.wav<>uid://cs5lcq3hjq3t4::::res://Game Resources/Drones/White/DroneW.png<>res://Scripts/AudioRandomizer.gd
+drone_purple.tscn::PackedScene::5224309412074736043::1696596797::0::1::::<><>::uid://do37nfh3e8u1t::::res://Scenes/drone.tscn<>uid://bhakrrc6lpp5t::::res://Game Resources/Drones/Purple/DroneP.png
+game.tscn::PackedScene::8294765861730337692::1696596796::0::1::::<><>::res://Scripts/game.gd<>uid://b0ed3eog3yewq::::res://Scenes/player.tscn<>uid://do37nfh3e8u1t::::res://Scenes/drone.tscn<>uid://cgoxu3k7162bf::::res://Scenes/drone_purple.tscn<>uid://d0wd5j2muhpcy::::res://Scenes/hud.tscn<>uid://b2ubj4ge7g7he::::res://Game Resources/SFX/PlayerDie.wav<>uid://bddnh2qx4snh5::::res://Scenes/game_over.tscn<>uid://b03c2ics56ifa::::res://Game Resources/SFX/DroneDie.wav<>uid://bpgvnyiecurok::::res://Game Resources/SFX/gem_pickup.wav<>uid://cg8k80damblue::::res://Game Resources/SFX/DroneLeft.wav<>uid://dci1nsucmgj33::::res://Scenes/pause.tscn<>uid://djvm31rx3wjli::::res://Game Resources/Enviroment/Space, I guess.png<>uid://63poegdfjrr8::::res://Game Resources/Enviroment/StarMoving.png<>uid://cx0nmqo6ms01h::::res://Game Resources/Music/Portal.mp3<>uid://qjhpgwxqagk2::::res://Scenes/gem_yellow_small.tscn
+game_over.tscn::PackedScene::2603983613264491648::1696596797::0::1::::<><>::res://Scripts/game_over.gd<>uid://cwvkpo5nqlosk::::res://Game Resources/nulshock bd.ttf
 gem_yellow_small.tscn::PackedScene::1142053054045196263::1695854440::0::1::::<><>::res://Scripts/gem_yellow_small.gd<>uid://0d4trey0j15c
-hud.tscn::PackedScene::8959635692406989008::1695854440::0::1::::<><>::res://Scripts/hud.gd<>uid://cwvkpo5nqlosk
-laser.tscn::PackedScene::2810277700205364415::1695914121::0::1::::<><>::res://Scripts/laser.gd<>uid://6s7wn3kpd24f::::res://Game Resources/Player/PlayerLaser.png<>uid://bfsy6525rnk5m::::res://Game Resources/SFX/PlayerLaser.wav
-main_menu.tscn::PackedScene::2350637548207849167::1695914092::0::1::::<><>::res://Scripts/main_menu.gd<>uid://do37nfh3e8u1t
-pause.tscn::PackedScene::7317757593944082856::1695854440::0::1::::<><>::res://Scripts/pause.gd<>uid://cwvkpo5nqlosk
-player.tscn::PackedScene::4149631670899427276::1695732332::0::1::::<><>::res://Scripts/player.gd<>uid://002w673cqo7k
-::res://Scripts/::1695913949
-drone.gd::GDScript::-1::1695732262::0::1::::Drone<>Area2D<>::
-game.gd::GDScript::-1::1695854359::0::1::::<>Node2D<>::
-game_over.gd::GDScript::-1::1695472305::0::1::::<>Control<>::
+hud.tscn::PackedScene::8959635692406989008::1696596797::0::1::::<><>::res://Scripts/hud.gd<>uid://cwvkpo5nqlosk::::res://Game Resources/nulshock bd.ttf<>uid://44s0fjnwj1mx::::res://Game Resources/UI/energy_emptyl.png<>uid://bds0bvgwmldw5::::res://Game Resources/UI/energy.png
+laser.tscn::PackedScene::2810277700205364415::1696596797::0::1::::<><>::res://Scripts/laser.gd<>uid://6s7wn3kpd24f::::res://Game Resources/Player/PlayerLaser.png<>uid://bfsy6525rnk5m::::res://Game Resources/SFX/PlayerLaser.wav<>res://Scripts/AudioRandomizer.gd
+main_menu.tscn::PackedScene::2350637548207849167::1696596796::0::1::::<><>::res://Scripts/main_menu.gd<>uid://do37nfh3e8u1t::::res://Scenes/drone.tscn<>uid://cgoxu3k7162bf::::res://Scenes/drone_purple.tscn<>uid://cwvkpo5nqlosk::::res://Game Resources/nulshock bd.ttf<>uid://djvm31rx3wjli::::res://Game Resources/Enviroment/Space, I guess.png<>uid://86avj1siecty::::res://Game Resources/Music/Mystery.mp3
+pause.tscn::PackedScene::7317757593944082856::1696596850::0::1::::<><>::res://Scripts/pause.gd<>uid://cwvkpo5nqlosk::::res://Game Resources/nulshock bd.ttf
+player.tres::ParticleProcessMaterial::7131633281046750911::1696593948::0::1::::<><>::
+player.tscn::PackedScene::4149631670899427276::1696596797::0::1::::<><>::res://Scripts/player.gd<>uid://c8uu7tw4m0cpr::::res://Scenes/player.tres<>uid://002w673cqo7k::::res://Game Resources/Player/PlayerIdle.png<>uid://bli5ply766vny::::res://Game Resources/Player/PlayerTrail.png
+::res://Scripts/::1696596850
+AudioRandomizer.gd::GDScript::-1::1696339662::0::1::::<>AudioStreamPlayer2D<>::
+chaingun.gd::GDScript::-1::1695916612::0::1::::<>Area2D<>::
+drone.gd::GDScript::-1::1696593986::0::1::::Drone<>Area2D<>::
+game.gd::GDScript::-1::1696596850::0::1::::<>Node2D<>::
+game_over.gd::GDScript::-1::1696596420::0::1::::<>Control<>::
 gem_yellow_small.gd::GDScript::-1::1695913778::0::1::::gem_yellow_small<>Area2D<>::
 global_vars.gd::GDScript::-1::1695854359::0::1::::<>Node<>::
 hud.gd::GDScript::-1::1695819594::0::1::::<>Control<>::
-laser.gd::GDScript::-1::1695913949::0::1::::<>Area2D<>::
+laser.gd::GDScript::-1::1696338917::0::1::::<>Area2D<>::
 main_menu.gd::GDScript::-1::1695507456::0::1::::<>Node2D<>::
 pause.gd::GDScript::-1::1695732263::0::1::::<>Control<>::
-player.gd::GDScript::-1::1695913778::0::1::::Player<>CharacterBody2D<>::
+player.gd::GDScript::-1::1696596145::0::1::::Player<>CharacterBody2D<>::
